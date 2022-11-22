@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   mongo:
     container_name: mongo
@@ -8,15 +8,26 @@ services:
       -  ./data:/data/db
     ports:
       - "27017:27017"
-  # app:
-  #   container_name: 
-  #   restart: always
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 8080:8080
-  #   external_links:
-  #     - mongo
-  #   depends_on:
-  #     - mongo
+    networks:
+      - employee-network
+  app:
+    container_name: employee-backend
+    restart: always
+    build:
+      context: .
+    depends_on:
+    - mongo
+    ports:
+      - 8080:8080
+    external_links:
+      - mongo
+    networks:
+      - employee-network
+    volumes:
+      - ./:/usr/src/app 
+      - /usr/src/app/node_modules
+
+
+networks:
+  employee-network:
+    external: true 

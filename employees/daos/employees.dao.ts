@@ -17,7 +17,7 @@ class EmployeesDao{
 
     Employee = mongooseService.getMongoose().model('Employees', this.employeeSchema)
 
-    constructor(){
+    constructor(){ 
         log('Created new instance of EmployeesDao')
     }
 
