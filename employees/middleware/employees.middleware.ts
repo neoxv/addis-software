@@ -31,9 +31,7 @@ class EmployeesMiddleware{
     }
 
     async createDateOfBirth(req:express.Request, res:express.Response, next:express.NextFunction){
-        let date = req.body.dateOfBirth
-        date = new Date(`${date.split('/')[2]}-${date.split('/')[0]}-${date.split('/')[1]}`)
-        req.body.dateOfBirth = date
+        req.body.dateOfBirth = new Date(req.body.dateOfBirth)
         next();
     }
 

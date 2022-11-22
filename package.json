@@ -4,7 +4,8 @@
   "description": "\"Test Project\"",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon index.ts",
+    "start": "tsc && node --unhandled-rejections=strict ./dist/app.js",
+    "dev": "nodemon index.ts",
     "debug": "export DEBUG=* && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

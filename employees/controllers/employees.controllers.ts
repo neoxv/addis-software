@@ -17,7 +17,7 @@ class EmployeesController{
 
     async createEmployee(req: express.Request, res: express.Response) {
         const employeeId = await employeesService.create(req.body);
-        res.status(201).send({ id: employeeId });
+        res.status(201).send({ _id: employeeId });
     }
 
     async patch(req: express.Request, res: express.Response) {
